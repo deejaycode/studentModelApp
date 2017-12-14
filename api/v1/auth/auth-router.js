@@ -3,7 +3,8 @@ var express 	= require("express"),
 	controller	= require("./auth-controller.js"),
 	auth 		= require("./auth.js");
 
-router.route(auth.verifyUser, controller.signIn);
+router.route("/")
+	  .post(auth.verifyUser, controller.signIn);
 
 
 module.exports = router;

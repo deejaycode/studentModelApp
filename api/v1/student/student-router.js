@@ -1,12 +1,13 @@
 var express =  require("express"),
 	router = express.Router(),
 	controller = require("./student-controller.js");
+	auth	   = require("../auth/auth.js");
 
 	router.param("id", controller.interceptIds)
 
 	router.route("/")
-		.post(controller.addStudent)
-		.get(controller.getStudents)
+		.post(auth.decodeToken.controller.addStudent)
+		.get(auth.decodeToken.controller.getStudents)
 
 	router.route("/:id")
 		.get(controller.getStudent)

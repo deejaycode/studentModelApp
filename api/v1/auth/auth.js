@@ -1,5 +1,14 @@
 var jwt = require("jsonwebtoken"),
-	userModel = require("../user/user-model.js");
+	expressjwt = require("express-jwt"),
+	userModel = require("../user/user-model.js"),
+	checkToken = expressjwt({secret: "jsonToken"});
+
+
+
+exports.decodeToken = function(req, res, next){
+	checkToken(req, res, next);
+
+}
 
 
 

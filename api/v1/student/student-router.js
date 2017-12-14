@@ -6,13 +6,13 @@ var express =  require("express"),
 	router.param("id", controller.interceptIds)
 
 	router.route("/")
-		.post(auth.decodeToken.controller.addStudent)
-		.get(auth.decodeToken.controller.getStudents)
+		.post(auth.decodeToken, controller.addStudent)
+		.get(auth.decodeToken, controller.getStudents)
 
 	router.route("/:id")
-		.get(controller.getStudent)
-		.delete(controller.deleteStudent)
-		.put(controller.updateStudent)
+		.get(auth.decodeToken, controller.getStudent)
+		.delete(auth.decodeToken, controller.deleteStudent)
+		.put(auth.decodeToken, controller.updateStudent)
 
 
 module.exports = router;
